@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  rubra-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - rubra-data:/data
+      # Mount rubra-sdk for local development (remove in production)
+      - ../rubra-sdk:/rubra-sdk:ro
+    environment:
+      - RUBRA_DATABASE_URL=${RUBRA_DATABASE_URL:-sqlite:////data/rubra.db}
+      - RUBRA_API_KEY=${RUBRA_API_KEY:-}
+      - RUBRA_DEBUG=${RUBRA_DEBUG:-false}
+      - RUBRA_CORS_ORIGINS=${RUBRA_CORS_ORIGINS:-["*"]}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Optional: PostgreSQL backend instead of SQLite
+  # Uncomment and set RUBRA_DATABASE_URL=postgresql://rubra:rubra@postgres:5432/rubra
+  # postgres:
+  #   image: postgres:15-alpine
+  #   environment:
+  #     POSTGRES_USER: rubra
+  #     POSTGRES_PASSWORD: rubra
+  #     POSTGRES_DB: rubra
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+
+volumes:
+  rubra-data:
+  # postgres-data:

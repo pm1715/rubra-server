@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rubra-server"
+version = "0.1.0"
+description = "Rubra Server — REST API and dashboard for the Rubra agentic eval framework."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+
+dependencies = [
+    "fastapi>=0.100",
+    "uvicorn[standard]>=0.23",
+    "pydantic-settings>=2.0",
+    # rubra-sdk — install with: pip install -e ../rubra-sdk
+    # or: pip install rubra>=0.1.0
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "httpx>=0.24",
+    "rubra>=0.1.0",
+]
+
+[project.scripts]
+rubra-server = "app.main:start"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
