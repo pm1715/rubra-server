@@ -1,0 +1,28 @@
+{
+  "name": "Rubra Full Stack (SDK + Server + Deploy)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8000, 11434],
+  "portsAttributes": {
+    "8000": {
+      "label": "Rubra Dashboard + API",
+      "onAutoForward": "openPreview"
+    },
+    "11434": {
+      "label": "Ollama (local judge LLM)",
+      "onAutoForward": "silent"
+    }
+  },
+  "containerEnv": {
+    "RUBRA_DATABASE_URL": "sqlite:////workspaces/.rubra-shared/rubra.db"
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start-ollama.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}

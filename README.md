@@ -4,8 +4,40 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 [![CI](https://github.com/pm1715/rubra-server/actions/workflows/ci.yml/badge.svg)](https://github.com/pm1715/rubra-server/actions)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/pm1715/rubra-server)
 
 Self-host a backend for your Rubra traces: browse them, run evaluations, and generate HTML reports from a browser — no notebook required.
+
+---
+
+## Try the full stack now — zero cost, zero setup
+
+Click **Open in GitHub Codespaces** above (or go to `codespaces.new/pm1715/rubra-server`). The devcontainer automatically:
+
+- Clones `rubra-sdk` and `rubra-deploy` as sibling repos and installs everything
+- Installs and starts **Ollama** with a small local model — no OpenAI key needed
+- Installs `kubectl`, `helm`, and `kind` for testing the [rubra-deploy](https://github.com/pm1715/rubra-deploy) Helm chart against a real (throwaway) Kubernetes cluster
+
+Once it's ready:
+
+```bash
+# 1. Generate a real trace — a tool-calling agent, judged by a free local model
+python examples/full_stack_demo.py
+
+# 2. Start the server
+uvicorn app.main:app --reload
+```
+
+Open the forwarded port-8000 URL for the dashboard, select the trace, and hit **Evaluate** — the judge-model field defaults to `gpt-4o-mini` but works with any [litellm](https://docs.litellm.ai/docs/providers)-supported model, including the free `ollama/llama3.2:1b` already running in the Codespace.
+
+To also test the Kubernetes deployment for real:
+
+```bash
+cd ../rubra-deploy
+./scripts/test-in-kind.sh
+```
+
+This builds the actual `Dockerfile`, loads it into a `kind` cluster, installs the Helm chart, and port-forwards it — a genuine deploy test with no registry or cloud cluster required.
 
 ---
 
@@ -55,7 +87,7 @@ Copy `.env.example` to `.env` and adjust:
 | `GET` | `/api/v1/traces` | List traces (`?agent_name=`, `?limit=`, `?offset=`) |
 | `GET` | `/api/v1/traces/{trace_id}` | Full trace detail including spans |
 | `DELETE` | `/api/v1/traces/{trace_id}` | Delete a trace and its stored metric results |
-| `POST` | `/api/v1/eval` | Evaluate a trace (`{"trace_id": "...", "metrics": "all"}`) |
+| `POST` | `/api/v1/eval` | Evaluate a trace (`{"trace_id": "...", "metrics": "all", "judge_model": "gpt-4o-mini"}`) |
 | `GET` | `/api/v1/eval/{trace_id}` | Fetch previously computed metric results |
 | `GET` | `/api/v1/report/{trace_id}` | Self-contained HTML report |
 | `GET` | `/api/v1/health` | Health check + storage backend info |
@@ -67,7 +99,7 @@ Full interactive docs at `/docs` (Swagger) and `/redoc`.
 
 ## Dashboard
 
-The `/` route serves a single-page dashboard: a trace list on the left, and on selection — trace metadata, span timeline, and an inline **Evaluate** button that runs any metric category and renders pass/fail results without leaving the page.
+The `/` route serves a single-page dashboard: a trace list on the left, and on selection — trace metadata, span timeline, and an inline **Evaluate** button that runs any metric category and renders pass/fail results without leaving the page. The judge-model field next to it accepts any litellm model string, so goal metrics can run against a free local Ollama model instead of a paid API.
 
 It polls `/api/v1/traces` every 30s, so traces produced by an instrumented agent elsewhere show up automatically.
 

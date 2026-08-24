@@ -84,6 +84,10 @@ class EvalRequest(BaseModel):
     target_tokens: int = 4096
     budget_usd: float = 0.10
     min_output_length: int = 10
+    judge_model: str = Field(
+        default="gpt-4o-mini",
+        description="litellm model string for goal metrics, e.g. 'ollama/llama3.2' for a free local model",
+    )
     persist: bool = True
 
 

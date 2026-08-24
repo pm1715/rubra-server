@@ -297,7 +297,10 @@ function renderTrace(trace) {
           <option value="tool">Tool orchestration</option>
           <option value="safety">Safety</option>
           <option value="quality">Quality</option>
+          <option value="goal">Goal (LLM-judge)</option>
         </select>
+        <input class="eval-select" id="judge-model" style="flex:0 0 200px" value="gpt-4o-mini"
+               title="litellm model for goal metrics — try ollama/llama3.2 for a free local judge">
         <button class="eval-btn" id="eval-btn" onclick="runEval('${trace.trace_id}')">▶ Evaluate</button>
         <button class="report-btn" onclick="openReport('${trace.trace_id}')">⬡ HTML Report</button>
       </div>
@@ -313,6 +316,7 @@ function renderTrace(trace) {
 async function runEval(traceId) {
   const btn = document.getElementById('eval-btn');
   const metrics = document.getElementById('metrics-sel').value;
+  const judge_model = document.getElementById('judge-model').value || 'gpt-4o-mini';
   const out = document.getElementById('eval-result');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>';
@@ -322,7 +326,7 @@ async function runEval(traceId) {
     const report = await api('/eval', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ trace_id: traceId, metrics }),
+      body: JSON.stringify({ trace_id: traceId, metrics, judge_model }),
     });
     renderReport(report, out);
   } catch (e) {

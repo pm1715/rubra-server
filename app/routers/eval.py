@@ -67,6 +67,7 @@ async def run_eval(
         target_tokens=req.target_tokens,
         budget_usd=req.budget_usd,
         min_output_length=req.min_output_length,
+        judge_model=req.judge_model,
         persist=False,
     )
 
