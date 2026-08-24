@@ -1,6 +1,8 @@
-# Rubra Server
+<p align="center">
+  <img src="assets/wordmark.svg" alt="Rubra" width="380"/>
+</p>
 
-**REST API + live dashboard for [Rubra](https://github.com/pm1715/rubra-sdk).**
+**Server — REST API + live dashboard for [Rubra](https://github.com/pm1715/rubra-sdk).**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 [![CI](https://github.com/pm1715/rubra-server/actions/workflows/ci.yml/badge.svg)](https://github.com/pm1715/rubra-server/actions)
