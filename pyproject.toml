@@ -4,11 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "rubra-server"
-version = "0.1.0"
+version = "0.1.1"
 description = "Rubra Server — REST API and dashboard for the Rubra agentic eval framework."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
+authors = [
+    { name = "Prayansh Mishra", email = "iprayanshmishra15@gmail.com" }
+]
 
 dependencies = [
     "fastapi>=0.100",

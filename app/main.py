@@ -9,6 +9,7 @@ Start:
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+from importlib.metadata import version as _pkg_version
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -40,7 +41,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="Rubra Server",
     description="REST API for the Rubra agentic evaluation framework.",
-    version="0.1.0",
+    version=_pkg_version("rubra-server"),
     docs_url="/docs",
     redoc_url="/redoc",
     lifespan=lifespan,
@@ -77,7 +78,7 @@ async def health():
 async def version():
     from rubra.__version__ import __version__ as sdk_version
     from app.schemas import VersionResponse
-    return VersionResponse(server="0.1.0", sdk=sdk_version)
+    return VersionResponse(server=_pkg_version("rubra-server"), sdk=sdk_version)
 
 
 # ---------------------------------------------------------------------------
