@@ -14,8 +14,7 @@ dependencies = [
     "fastapi>=0.100",
     "uvicorn[standard]>=0.23",
     "pydantic-settings>=2.0",
-    # rubra-sdk — install with: pip install -e ../rubra-sdk
-    # or: pip install rubra>=0.1.0
+    "rubra[judge]>=0.1.0",
 ]
 
 [project.optional-dependencies]
@@ -23,11 +22,14 @@ dev = [
     "pytest>=7.0",
     "pytest-asyncio>=0.21",
     "httpx>=0.24",
-    "rubra>=0.1.0",
 ]
 
 [project.scripts]
 rubra-server = "app.main:start"
+
+[project.urls]
+Homepage = "https://github.com/pm1715/rubra-server"
+Issues = "https://github.com/pm1715/rubra-server/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["app"]
