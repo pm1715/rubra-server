@@ -2,18 +2,14 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install deps first (layer caching)
-COPY pyproject.toml ./
-RUN pip install --no-cache-dir fastapi "uvicorn[standard]" pydantic-settings
-
-# Install rubra-sdk
-# In production: pip install rubra>=0.1.0
-# For local dev build: COPY ../rubra-sdk /rubra-sdk && pip install /rubra-sdk
-ARG RUBRA_SDK_VERSION=0.1.0
-RUN pip install --no-cache-dir rubra==${RUBRA_SDK_VERSION} || \
-    echo "rubra not yet on PyPI — mount or COPY rubra-sdk manually"
-
+COPY pyproject.toml README.md ./
 COPY app/ ./app/
+
+# Installs this package plus everything declared in pyproject.toml's
+# dependencies — including rubra[judge] from PyPI — and registers
+# rubra-server's own package metadata (needed by importlib.metadata
+# at runtime for /api/v1/version).
+RUN pip install --no-cache-dir .
 
 # Persistent storage volume
 VOLUME ["/data"]
