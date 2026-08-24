@@ -4,6 +4,8 @@
 
 **Server — REST API + live dashboard for [Rubra](https://github.com/pm1715/rubra-sdk).**
 
+[![PyPI](https://img.shields.io/pypi/v/rubra-server.svg)](https://pypi.org/project/rubra-server/)
+[![Docker](https://img.shields.io/badge/ghcr.io-rubra--server-blue?logo=docker)](https://github.com/pm1715/rubra-server/pkgs/container/rubra-server)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 [![CI](https://github.com/pm1715/rubra-server/actions/workflows/ci.yml/badge.svg)](https://github.com/pm1715/rubra-server/actions)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/pm1715/rubra-server)
@@ -48,6 +50,12 @@ This builds the actual `Dockerfile`, loads it into a `kind` cluster, installs th
 ### Docker (recommended)
 
 ```bash
+docker run -p 8000:8000 ghcr.io/pm1715/rubra-server:latest
+```
+
+Or with `docker compose` for persistent storage:
+
+```bash
 git clone https://github.com/pm1715/rubra-server
 cd rubra-server
 docker compose up
@@ -56,7 +64,14 @@ docker compose up
 - Dashboard → http://localhost:8000
 - API docs → http://localhost:8000/docs
 
-### Local
+### From PyPI
+
+```bash
+pip install rubra-server
+rubra-server
+```
+
+### From source
 
 ```bash
 pip install -e ".[dev]"
@@ -125,6 +140,10 @@ def my_agent(question: str) -> str:
 As long as `rubra-server` points at the same `RUBRA_DATABASE_URL`, traces appear in the dashboard as soon as the agent finishes.
 
 ---
+
+## Security & Code of Conduct
+
+This repo follows the same [Security Policy](https://github.com/pm1715/rubra-sdk/blob/main/SECURITY.md) and [Code of Conduct](https://github.com/pm1715/rubra-sdk/blob/main/CODE_OF_CONDUCT.md) as rubra-sdk.
 
 ## License
 
