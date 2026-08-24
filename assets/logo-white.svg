@@ -1,0 +1,18 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="100" cy="100" rx="95" ry="37" transform="rotate(-12 100 100)"
+           fill="none" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+  <ellipse cx="100" cy="100" rx="95" ry="37" transform="rotate(55 100 100)"
+           fill="none" stroke="#ffffff" stroke-width="1.8" opacity="0.55"/>
+
+  <g fill="#ffffff" stroke="#7a1b28" stroke-width="0.5" stroke-linejoin="round">
+    <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.85" transform="rotate(0 100 100)"/>
+    <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.6"  transform="rotate(51.4 100 100)"/>
+    <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.6"  transform="rotate(102.8 100 100)"/>
+    <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.6"  transform="rotate(154.2 100 100)"/>
+    <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.85" transform="rotate(205.6 100 100)"/>
+    <ellipse cx="100" cy="80" rx="16" ry="33" opacity="1"    transform="rotate(257.0 100 100)"/>
+    <ellipse cx="100" cy="80" rx="16" ry="33" opacity="1"    transform="rotate(308.4 100 100)"/>
+  </g>
+
+  <circle cx="100" cy="100" r="9" fill="#7a1b28" opacity="0.55"/>
+</svg>

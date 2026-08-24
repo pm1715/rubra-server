@@ -96,10 +96,12 @@ _DASHBOARD_HTML = """<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rubra Dashboard</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ3JvdW5kIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMzIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJsb2JlQnJpZ2h0IiBjeD0iMzglIiBjeT0iMjIlIiByPSI4NSUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZWFiNjhmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzglIiBzdG9wLWNvbG9yPSIjYzI0NjVhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjN2ExYjI4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzNkMGMxMiIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ibG9iZU1lZCIgY3g9IjM4JSIgY3k9IjIyJSIgcj0iODUlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2M5OGE3NiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjM4JSIgc3RvcC1jb2xvcj0iI2ExMjYzYSIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ijc1JSIgc3RvcC1jb2xvcj0iIzYzMTMxZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyZTA5MGQiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImxvYmVEYXJrIiBjeD0iMzglIiBjeT0iMjIlIiByPSI4NSUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYTA1ZjVmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzglIiBzdG9wLWNvbG9yPSIjN2ExYjI4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjNGEwZTE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFmMDYwOSIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KCiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImhvbGUiIGN4PSI1MCUiIGN5PSIzMCUiIHI9IjgwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMzYTEwMTUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiMxNTA0MDYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDUwMTAxIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJob2xlU2hhZG93IiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNDUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iMTY2IiByeD0iNDgiIHJ5PSI5IiBmaWxsPSJ1cmwoI2dyb3VuZCkiLz4KCiAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9Ijk1IiByeT0iMzciIHRyYW5zZm9ybT0icm90YXRlKC0xMiAxMDAgMTAwKSIKICAgICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9IiNhMzc5MmEiIHN0cm9rZS13aWR0aD0iMS44IiBvcGFjaXR5PSIwLjUiLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iMTAwIiByeD0iOTUiIHJ5PSIzNyIgdHJhbnNmb3JtPSJyb3RhdGUoNTUgMTAwIDEwMCkiCiAgICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYTM3OTJhIiBzdHJva2Utd2lkdGg9IjEuNiIgb3BhY2l0eT0iMC4zNSIvPgoKICA8ZyBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSI4MCIgcng9IjE2IiByeT0iMzMiIGZpbGw9InVybCgjbG9iZU1lZCkiICAgc3Ryb2tlPSIjMmUwOTBkIiBzdHJva2Utd2lkdGg9IjAuNzUiIG9wYWNpdHk9IjAuOTciIHRyYW5zZm9ybT0icm90YXRlKDAgMTAwIDEwMCkiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSI4MCIgcng9IjE2IiByeT0iMzMiIGZpbGw9InVybCgjbG9iZURhcmspIiAgc3Ryb2tlPSIjMWYwNjA5IiBzdHJva2Utd2lkdGg9IjAuNzUiIG9wYWNpdHk9IjAuOTciIHRyYW5zZm9ybT0icm90YXRlKDUxLjQgMTAwIDEwMCkiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSI4MCIgcng9IjE2IiByeT0iMzMiIGZpbGw9InVybCgjbG9iZURhcmspIiAgc3Ryb2tlPSIjMWYwNjA5IiBzdHJva2Utd2lkdGg9IjAuNzUiIG9wYWNpdHk9IjAuOTciIHRyYW5zZm9ybT0icm90YXRlKDEwMi44IDEwMCAxMDApIi8+CiAgICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iODAiIHJ4PSIxNiIgcnk9IjMzIiBmaWxsPSJ1cmwoI2xvYmVEYXJrKSIgIHN0cm9rZT0iIzFmMDYwOSIgc3Ryb2tlLXdpZHRoPSIwLjc1IiBvcGFjaXR5PSIwLjk3IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTQuMiAxMDAgMTAwKSIvPgogICAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjgwIiByeD0iMTYiIHJ5PSIzMyIgZmlsbD0idXJsKCNsb2JlTWVkKSIgICBzdHJva2U9IiMyZTA5MGQiIHN0cm9rZS13aWR0aD0iMC43NSIgb3BhY2l0eT0iMC45NyIgdHJhbnNmb3JtPSJyb3RhdGUoMjA1LjYgMTAwIDEwMCkiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSI4MCIgcng9IjE2IiByeT0iMzMiIGZpbGw9InVybCgjbG9iZUJyaWdodCkiIHN0cm9rZT0iIzNkMGMxMiIgc3Ryb2tlLXdpZHRoPSIwLjc1IiBvcGFjaXR5PSIwLjk3IiB0cmFuc2Zvcm09InJvdGF0ZSgyNTcuMCAxMDAgMTAwKSIvPgogICAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjgwIiByeD0iMTYiIHJ5PSIzMyIgZmlsbD0idXJsKCNsb2JlQnJpZ2h0KSIgc3Ryb2tlPSIjM2QwYzEyIiBzdHJva2Utd2lkdGg9IjAuNzUiIG9wYWNpdHk9IjAuOTciIHRyYW5zZm9ybT0icm90YXRlKDMwOC40IDEwMCAxMDApIi8+CiAgPC9nPgoKICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEzIiBmaWxsPSJ1cmwoI2hvbGVTaGFkb3cpIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI5IiBmaWxsPSJ1cmwoI2hvbGUpIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI5IiBmaWxsPSJub25lIiBzdHJva2U9IiNhMzc5MmEiIHN0cm9rZS13aWR0aD0iMC44IiBvcGFjaXR5PSIwLjU1Ii8+Cjwvc3ZnPgo="/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f3f4f6;color:#111;height:100vh;display:flex;flex-direction:column}
 header{background:#dc2626;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-shrink:0}
+.logo-icon{width:30px;height:30px;flex-shrink:0}
 .logo{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.5px}
 .logo-sub{color:#fca5a5;font-size:13px}
 .header-right{margin-left:auto;display:flex;gap:12px;align-items:center}
@@ -159,6 +161,22 @@ header{background:#dc2626;padding:14px 24px;display:flex;align-items:center;gap:
 <body>
 
 <header>
+  <svg class="logo-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="100" cy="100" rx="95" ry="37" transform="rotate(-12 100 100)"
+             fill="none" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+    <ellipse cx="100" cy="100" rx="95" ry="37" transform="rotate(55 100 100)"
+             fill="none" stroke="#ffffff" stroke-width="1.8" opacity="0.55"/>
+    <g fill="#ffffff" stroke="#7a1b28" stroke-width="0.5" stroke-linejoin="round">
+      <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.85" transform="rotate(0 100 100)"/>
+      <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.6"  transform="rotate(51.4 100 100)"/>
+      <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.6"  transform="rotate(102.8 100 100)"/>
+      <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.6"  transform="rotate(154.2 100 100)"/>
+      <ellipse cx="100" cy="80" rx="16" ry="33" opacity="0.85" transform="rotate(205.6 100 100)"/>
+      <ellipse cx="100" cy="80" rx="16" ry="33" opacity="1"    transform="rotate(257.0 100 100)"/>
+      <ellipse cx="100" cy="80" rx="16" ry="33" opacity="1"    transform="rotate(308.4 100 100)"/>
+    </g>
+    <circle cx="100" cy="100" r="9" fill="#7a1b28" opacity="0.55"/>
+  </svg>
   <div class="logo">Rubra</div>
   <div class="logo-sub">Agentic Eval Dashboard</div>
   <div class="header-right">
