@@ -31,6 +31,8 @@ curl -sLo /tmp/kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
 chmod +x /tmp/kind && sudo mv /tmp/kind /usr/local/bin/kind
 
 echo "==> Installing Ollama"
+sudo apt-get update -qq
+sudo apt-get install -y -qq zstd
 curl -fsSL https://ollama.com/install.sh | sh
 
 echo "==> Setup complete."
