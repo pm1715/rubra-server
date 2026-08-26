@@ -1,6 +1,8 @@
 """Tests for GET /api/v1/report/{trace_id}."""
 from __future__ import annotations
 
+import re
+
 
 def test_report_returns_html(client, completed_trace):
     r = client.get(f"/api/v1/report/{completed_trace.trace_id}")
@@ -49,6 +51,7 @@ def test_version_endpoint(client):
     r = client.get("/api/v1/version")
     assert r.status_code == 200
     data = r.json()
-    assert "server" in data
-    assert "sdk" in data
-    assert data["sdk"] == "0.1.0"
+    # Assert shape (a valid semver-like string), not an exact pinned value —
+    # both packages' versions change independently of this test suite.
+    assert re.match(r"^\d+\.\d+\.\d+", data["server"])
+    assert re.match(r"^\d+\.\d+\.\d+", data["sdk"])
